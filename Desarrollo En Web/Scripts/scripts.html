@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width-device-width, initial-scale=1">
+        <title>Javascript</title>
+        <link href="style.css" rel="stylesheet" type="text/css">
+        <style>
+            div{
+                font-size: 2em;
+                color:aqua
+            }
+        </style>
+    </head>
+    <body>
+        <div><span id="texto"></span></div>
+        <script>
+            let nota=prompt("¿Que nota sacaste en programación?");
+            let mensaje="";
+            
+            texto.innerHTML=mensaje;
+            if(nota<=10){
+                let estado="";
+                nota<4?(estado="Horrible"):nota<5?(estado="Mal"):nota<9?(estado="Notable"):(estado="Sobresaliente");
+            nota>=5?(alert("Enhorabuena aprobaste"), texto.innerHTML=("Aprobaste con "+nota+" "+estado), console.log(true)):alert("Suspenso");
+            //nota>=5?(texto.innerHTML="Aprobaste!"):alert("Nope");
+            }else{
+                texto.innerHTML="Imposible";
+            }
+        </script>
+    </body>
+    </html>
