@@ -27,6 +27,13 @@
             }else{
                 texto.innerHTML="Imposible";
             }
+            let i=0;
+            let juego=prompt("Elige un numero al azar");
+            
+            for(i=0; i<100; i++){
+                let number=parseInt(Math.random()*100);
+                number==juego?(alert("Ganaste")):alert("Perdiste");
+            }
         </script>
     </body>
     </html>
