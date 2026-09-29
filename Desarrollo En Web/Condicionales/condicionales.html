@@ -42,14 +42,18 @@
             let sales=confirm("¿SALES DE CASA?");
             let paraguas=confirm("¿LLEVAS PARAGUAS?");
             let gorro=confirm("¿LLEVAS GORRO?");
-            let calvo=confirm("¿TIENES PELO?");
+            let calvo=confirm("¿ERES CALVO GUAPO Y EXITOSO?");
             let a=false;
             calvo || gorro || paraguas || !sales || !llueve?(alert("No te mojas campeón"), a=true):alert("Te mojas pringao");
             let elBueno = document.getElementById("final_bueno");
             let elMalo = document.getElementById("final_malo");
-            llueve? lluvia.innerHTML="llueve": lluvia.innerHTML="No llueve"
-            a?(elBueno.style.display = "block", elMalo.style.display = "none", elBueno.innerText = "No Te Mojas")
-            :( elMalo.style.display = "block", elBueno.style.display = "none", elMalo.innerText = "Te Mojas"  )
+            llueve? lluvia.innerHTML="Llueve": lluvia.innerHTML="No Llueve"
+            sales? calle.innerHTML="Saliste traidor": calle.innerHTML="No saliste"
+            paraguas? coso.innerHTML="Llevas paraguas tranqui": coso.innerHTML="No llevas paraguas colega..."
+            gorro? gorrito.innerHTML="Tienes gorrito de patito :D": gorrito.innerHTML="No tienes gorrito de patito :("
+            calvo? sin_pelo.innerHTML="CALVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO": sin_pelo.innerHTML="No calvo"
+            a?(elBueno.style.display = "block", elMalo.style.display = "none", elBueno.outerHTML = "<h1><b><b>NO TE MOJAS</b></b></h1>")
+            :( elMalo.style.display = "block", elBueno.style.display = "none", elMalo.outerHTML = "<h1><b><b>TE MOJAS</b></b></h1>"  )
             }
         </script>
         <div class="title">
@@ -60,6 +64,10 @@
         </div>
         <div class="body">
             <p id="lluvia"></p>
+            <p id="calle"></p>
+            <p id="coso"></p>
+            <p id="gorrito"></p>
+            <p id="sin_pelo"></p>
             <p id="final_bueno" ><span style="display: none"></span></p>
             <p id="final_malo" ><span style="display: none"></span></p>
         </div>
