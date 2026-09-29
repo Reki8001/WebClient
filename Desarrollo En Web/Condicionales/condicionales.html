@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width-device-width, initial-scale=1">
+        <title>Condicionales</title>
+        <style>
+            body{
+                background-color: bisque;
+            }
+            .title{
+                display: flex;
+                text-align: center;
+                margin-left: 32%;
+                margin-right:25%;
+                width: 50%;
+            }
+            .body{
+                font-size: 2em;
+                color:rgb(223, 95, 95);
+                border-radius: 2em;
+            }
+            button{
+                text-align: center;
+                border-radius: 2em;
+                width: 50em;
+                display: flex;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+           /* let disparo=confirm("Fuiste atacado?");
+            let chaleco=confirm("Protección?");
+            let fallo=confirm("Esquivado?");
+            let cabeza=confirm("Mortal/cabeza?");
+            let fogueo=confirm("Fogueo?");
+
+            fallo || fogueo || !disparo?alert("Sobreviviste"):!cabeza && chaleco?alert("Sobreviviste"):alert("Muerto"); */
+            function empezar(){
+            let llueve=confirm("¿LLUEVE?");
+            let sales=confirm("¿SALES DE CASA?");
+            let paraguas=confirm("¿LLEVAS PARAGUAS?");
+            let gorro=confirm("¿LLEVAS GORRO?");
+            let calvo=confirm("¿TIENES PELO?");
+            let a=false;
+            calvo || gorro || paraguas || !sales || !llueve?(alert("No te mojas campeón"), a=true):alert("Te mojas pringao");
+            let elBueno = document.getElementById("final_bueno");
+            let elMalo = document.getElementById("final_malo");
+            llueve? lluvia.innerHTML="llueve": lluvia.innerHTML="No llueve"
+            a?(elBueno.style.display = "block", elMalo.style.display = "none", elBueno.innerText = "No Te Mojas")
+            :( elMalo.style.display = "block", elBueno.style.display = "none", elMalo.innerText = "Te Mojas"  )
+            }
+        </script>
+        <div class="title">
+            <h1>¿Te estropearás el <b> pelo pantene </b> con la lluvia?</h1>
+        </div>
+        <div class="title">
+            <button onClick="empezar()">Empezar</button>
+        </div>
+        <div class="body">
+            <p id="lluvia"></p>
+            <p id="final_bueno" ><span style="display: none"></span></p>
+            <p id="final_malo" ><span style="display: none"></span></p>
+        </div>
+    </body>
+    </html>
