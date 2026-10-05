@@ -13,7 +13,7 @@
     <body>
         <script>
             //window.open("https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html", "new", "width=500px", "height=500px")
-            let my_window=window.open("http://127.0.0.1:2222/Desarrollo%20En%20Web/Condicionales/condicionales.html", "new", "width=500px, height=500px")
+            my_window=window.open("http://127.0.0.1:2222/Desarrollo%20En%20Web/Condicionales/condicionales.html", "new", "width=500px, height=500px")
             function activar(miUrl){
                 my_window.focus();
                 my_window.location=miUrl
@@ -22,7 +22,9 @@
             function tamaño(){
                 //my_window.resizeBy(100, 200);
                 my_window.focus();
-                my_window.close(); //my_window.cuenta>=100?my_window.close():void(0)
+                //my_window.close(); 
+                //my_window.cuenta>=100?my_window.close():void(0)
+                cuenta>=100?my_window.close():void(0)
             }
         </script>
         <button onclick="activar('http://127.0.0.1:2222/Desarrollo%20En%20Web/Condicionales/condicionales.html')">Activar</button>
@@ -34,7 +36,7 @@
         </div>
         <script>
             window.onload=contar;
-            let cuenta=0;
+            cuenta=0;
             function contar(){
                 cuenta+=5;
                 contador.innerText=cuenta;
