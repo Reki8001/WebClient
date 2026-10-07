@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bolita</title>
+    <style>
+        #bolita {
+            height: 50px;
+            width: 50px;
+            background-color: red;
+            border-radius: 100%;
+            position: absolute;
+            left: 0;
+        }
+        body{
+            background-color: burlywood;
+        }
+    </style>
+</head>
+<body>
+    <!--<div id="bolita"></div>-->
+    <script>
+        //var bolita=document.getElementById("bolita");
+        let posX = 1;
+        let posY = 1;
+        let velocidad = 1;
+        let vel= 1;
+        let potencia = 1;
+        let color;
+        console.log(color);
+        let red_points = 0;
+        let blue_points = 0;
+        window.onload=function(){
+            setInterval(mover, 20);
+            bolita.onmouseover = function (){
+            ncolor(); 
+            potencia=potencia+1;
+            potencia%2==0?potencia+1:null;
+            velocidad=velocidad*-1;
+        }
+        }
+        function mover(){
+            bolita.style.left=posX+"px";
+            bolita.style.top=posY+"px";
+            bolita.style.backgroundColor = "#"+color;
+            posX<innerWidth-50?posX=posX+velocidad*potencia:(velocidad=-1, red_points=red_points+1, potencia=1);
+            posY<innerHeight-50?posY=posY+vel*potencia:vel=-1;
+            posX>0?posX=posX+velocidad*potencia:(velocidad=1, blue_points=blue_points+1, potencia=1);
+            posY>0?posY=posY+vel*potencia:vel=1;
+            Red.innerHTML=red_points;
+            Blue.innerHTML=blue_points;
+        }
+        function ncolor(){
+            color=parseInt(Math.random()*(256*256*256)).toString(16);
+        }
+
+        /*function mover() {
+
+            posX = posX + velocidad;
+
+            if (posX >= window.innerWidth - 30) {
+                posX = window.innerWidth - 30;
+                if (posX == window.innerWidth - 30) {
+                    velocidad = -velocidad;
+                }
+            }
+
+            if (posX <= 0) {
+                posX = 0; 
+                velocidad = -velocidad;
+            }
+
+            bolita.style.left = posX + "px";
+        }*/
+
+    </script>
+    <div id="bolita"></div>
+    <div id="Red"></div>
+    <div id="Blue"></div>
+
+</body>
+</html>
