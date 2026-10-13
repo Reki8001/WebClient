@@ -43,9 +43,9 @@
             bolita.style.left=posX+"px";
             bolita.style.top=posY+"px";
             bolita.style.backgroundColor = "#"+color;
-            posX<innerWidth-50?posX=posX+velocidad*potencia:(velocidad=-1, red_points=red_points+1, potencia=1);
+            posX<innerWidth-50?posX=posX+velocidad*potencia:(velocidad=-1, red_points=red_points+1, potencia=3);
             posY<innerHeight-50?posY=posY+vel*potencia:vel=-1;
-            posX>0?posX=posX+velocidad*potencia:(velocidad=1, blue_points=blue_points+1, potencia=1);
+            posX>0?posX=posX+velocidad*potencia:(velocidad=1, blue_points=blue_points+1, potencia=3);
             posY>0?posY=posY+vel*potencia:vel=1;
             Red.innerHTML=red_points;
             Blue.innerHTML=blue_points;

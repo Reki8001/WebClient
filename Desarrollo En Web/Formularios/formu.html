@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario Tienda</title>
+    <style>
+        body{
+            background-color: rgb(135, 222, 147);
+        }
+    </style>
+    <script>
+        let cesta = 0;
+        let productos = [40, 25, 50];
+        window.addEventListener("load", function(){
+            p1.addEventListener("click", function(){
+                cesta+=40;
+                console.log(cesta)
+            })
+            p2.addEventListener("click", function(){
+                cesta+=25;
+                console.log(cesta)
+            })
+            p3.addEventListener("click", function(){
+                cesta+=productos[2]
+                console.log(cesta)
+            })
+            bcesta.addEventListener("click", function(){
+                bcesta.innerHTML="Tu cesta son "+ cesta +" €";
+            })
+            mcesta.addEventListener("mouseover", function(){
+                temporizador = setTimeout(function(){
+                cesta=0;
+                bcesta.innerHTML="Mostrar cesta";
+                alert("cesta vaciada");
+                console.log(cesta)
+            }, 800);
+        })
+    </script>
+</head>
+<body>
+    <!-- <form action="#" id="formulario1">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre">
+    <p>
+    <input type="submit"></inpput>
+    </form>
+    <form action="#" id="formulario2">
+        <label for="pais">País:</label>
+        <input type="text" id="pais" name="pais">
+        <p>
+        <input type="submit">
+    </form>
+    <div id="saludo">Bienvenido</div>
+    <script>
+        window.onload=function(){
+            const miFormulario=document.forms[0];
+            document.forms[0].addEventListener("submit",
+            function(){
+                event.preventDefault();
+                if(nombre.value=="Reki"){
+                    document.forms[0].submit();
+                    saludo.outerHTML="<b>Hola, "+nombre.value+" de "+pais.value+"</b>";
+                } else{
+                alert(document.forms[0].elements[0].value)
+                }
+                alert(nombre.value) //El id del formulario
+                saludo.outerHTML="<b>Hola, "+nombre.value+" de "+pais.value+"</b>";
+                miFormulario.style.display="none"
+            });
+        }
+    </script> -->
+    <p id="p1">Jersey    🧺</p>
+    <p id="p2">Pantalón  🧺</p>
+    <p id="p3">Chaqueta  🧺</p>
+    <p id="bcesta"> Mostrar cesta</p>
+    <p id="mcesta">Borrar 🧺</p>
+</body>
+</html>

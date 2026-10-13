@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario</title>
+    <style>
+        body{
+            background-color: burlywood;
+        }
+    </style>
+</head>
+<body>
+    <form action="#" id="formulario1">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre">
+    <p>
+    <!-- <input type="submit"></inpput>
+    </form>
+    <form action="#" id="formulario2"> -->
+        <label for="pais">País:</label>
+        <input type="text" id="pais" name="pais">
+        <p>
+        <input type="submit">
+    </form>
+    <div id="saludo">Bienvenido</div>
+    <script>
+        window.onload=function(){
+            const miFormulario=document.forms[0];
+            document.forms[0].addEventListener("submit",
+            function(){
+                event.preventDefault();
+                if(nombre.value=="Reki"){
+                    document.forms[0].submit();
+                    saludo.outerHTML="<b>Hola, "+nombre.value+" de "+pais.value+"</b>";
+                } else{
+                alert(document.forms[0].elements[0].value)
+                }
+                alert(nombre.value) //El id del formulario
+                saludo.outerHTML="<b>Hola, "+nombre.value+" de "+pais.value+"</b>";
+                miFormulario.style.display="none"
+            });
+        }
+    </script>
+</body>
+</html>

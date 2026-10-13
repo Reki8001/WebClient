@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html class="no-js" lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width-device-width, initial-scale=1">
+        <title>MiniVentana</title>
+        <style>
+            body{
+                background-color: rgb(233, 243, 177);
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                color: rgb(255, 194, 230);
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Mini Ventana</h1>
+
+        <script>
+            /*window.onload=function(){
+                informacion.innerHTML="Anchura: "+window.innerWidth+"<br>Altura: "+window.innerHeight+"<br>Tamaño total: "+(window.innerWidth+window.innerHeight);
+            }*/
+
+            let contador = 0;
+            window.onresize=darTamano;
+            window.onload=darTamano;
+            function darTamano() {
+                informacion.innerHTML = "<p>Anchura: " + window.innerWidth;
+                informacion.innerHTML += "<p>Altura: " + window.innerHeight;
+                informacion.innerHTML += "<p>Cambios: " + contador;
+                contador++;
+
+                window.innerWidth < 600 ?
+                    (alert("Te has pasado"), window.resizeTo(1200, innerHeight)) :
+                    void(0);
+            }
+        </script>
+
+        <div id="informacion"></div>
+        <!-- <button onclick="darTamano()">DIME TAMAÑO</button> -->
+
+    </body>
+</html>

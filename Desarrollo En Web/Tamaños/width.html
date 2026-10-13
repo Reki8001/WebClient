@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html class="no-js" lang="">
+<html class="no-js" lang="es">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width-device-width, initial-scale=1">
-        <title>Objeto Windows</title>
+        <title>Ventanota</title>
         <style>
             body{
                 background-color: rgb(82, 68, 52);
@@ -21,12 +21,40 @@
             <h1>Tamaño De Ventanas</h1>
             <p>Altura: 240</p>
             <p>Anchura: 500</p>
-            <p>Veces cambiada: 2</p>
+            <p>Veces cambiada: 1</p>
             <button onclick="">Abrir</button>
             <hr>
             <button onclick="">Aumentar</button>
             <p></p>
             <button onclick="">Encoger</button>
+
+            <script>
+                let miVentana = window.open("http://localhost:63342/Cliente/contador.html?_ijt=4lg0ckgbdi59dhhdq00lqoenlt", "nombre", "width=500,height=500,top=200,left=300, resizable=yes");
+
+                function activar(miUrl){
+                    miVentana.focus();
+                    miVentana.location=miUrl;
+                }
+
+                function tamano(){
+                    miVentana.resizeBy(500,600);
+                    miVentana.focus();
+                }
+
+                function aumentar(){
+                    miVentana.focus();
+                    miVentana.contar();
+                    miVentana.cuenta>=100?miVentana.close():void(0);
+                }
+            </script>
+
+            <button onclick="activar('https://www.elpais.es')">El país</button>
+            <button onclick="activar('https://www.eldiario.es')">El diario</button>
+            <button onclick="activar('https://www.amazon.es')">Amazon</button>
+
+            <button onclick="tamano()">MOVER</button>
+            <button onclick="aumentar()">+</button>
+            <button onclick="activar('tamano_ventana.html')">CAMBIAR TAMAÑO</button>
         </div>
     </body>
 </html>
