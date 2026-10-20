@@ -26,15 +26,18 @@
             })
             bcesta.addEventListener("click", function(){
                 bcesta.innerHTML="Tu cesta son "+ cesta +" €";
+                localStorage.setItem("tuCesta", cesta)
             })
             mcesta.addEventListener("mouseover", function(){
                 temporizador = setTimeout(function(){
+                localStorage.removeItem("tuCesta")
                 cesta=0;
                 bcesta.innerHTML="Mostrar cesta";
                 alert("cesta vaciada");
                 console.log(cesta)
             }, 800);
         })
+    })
     </script>
 </head>
 <body>
@@ -68,7 +71,7 @@
                 miFormulario.style.display="none"
             });
         }
-    </script> -->
+    </script>-->
     <p id="p1">Jersey    🧺</p>
     <p id="p2">Pantalón  🧺</p>
     <p id="p3">Chaqueta  🧺</p>

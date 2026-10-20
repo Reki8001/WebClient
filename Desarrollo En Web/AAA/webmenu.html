@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+    <style>
+        body{
+            background-color: burlywood;
+        }
+        header, footer{
+            text-align:center;
+            background-color: cadetblue;
+            min-height: 4em;
+        }
+        footer{
+            padding: auto;
+            color: white;
+        }
+        #frame{
+            margin: auto;
+            text-align:center;
+
+        }
+        ul, li{
+            list-style: none;
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 2em;
+            padding-right: 2em;
+        }
+        a{
+            font-style: none;
+            border-radius: 1em;
+            color:burlywood;
+            padding: 5px;
+            border: 2px solid white;
+    
+        }
+        a:hover{
+            background-color:burlywood;
+            color:cadetblue;
+            border-radius: 1em;
+        }
+    </style>
+</head>
+<body>
+    <hr>
+    <header>
+        <nav>
+        <ul>
+            <li><a href="#1">ElPaís</a></li>
+            <li><a href="#2">ElDiario</a></li>
+            <li><a href="#3">AtlasFood</a></li>
+            <li><a href="#4">Caracola</a></li>
+        </ul>
+        </nav>
+    </header>
+    <script>
+        let direcciones=["https://www.elpais.es", "www.eldiario.es", "www.marca.es", "www.as.es"]
+        window.addEventListener("load", function(){
+            window.addEventListener("hashchange", function(){
+                valor=location.hash;
+                switch(valor){
+                    case "#1":
+                        frames[0].location.href=direcciones[0];
+                        break;
+                    case "#2":
+                        frames[0].location.href=direcciones[1];
+                        break;
+                    case "#3":
+                        frames[0].location.href=direcciones[2];
+                        break;
+                    case "#4":
+                        frames[0].location.href="https://itaca.gg/profile/index";
+                        break;
+                }
+            })
+        })
+    </script>
+    <hr>
+    <div id="frame">
+        <iframe width="1000" height="600"></iframe>
+    </div>
+    <hr>
+    <footer>
+    
+        <p>Reki Bella 8001</p>
+        
+    </footer>
+    <hr>
+</body>
+</html>

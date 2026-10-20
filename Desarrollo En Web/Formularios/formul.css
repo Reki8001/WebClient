@@ -1,0 +1,23 @@
+            body{
+                background-color: darkslateblue;
+            }
+            #HEADER{
+                width: 70%;
+                height: 20%;
+                margin: 10px auto;
+                padding: 10px;
+                border: 2px solid;
+                border-radius: 2em;
+                border-color:deeppink;
+                color:aquamarine;
+            }
+            #BOX{
+                width: 70%;
+                height: 60%;
+                margin: 1px auto;
+                padding: 20px;
+                border: 2px solid;
+                border-radius: 2em;
+                border-color: deeppink;
+                color:aquamarine;
+            }

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Navegador</title>
+    <style>
+        body{
+            background-color: burlywood;
+        }
+    </style>
+</head>
+<body>
+    <div>Navegador: <span id="navegador"></span></div>
+    <div>Sistema: <span id="sistema"></span></div>
+    <div>Idioma: <span id="idioma"></span></div>
+    <div>Online: <span id="conexion"></span></div>
+    <div>Cookies: <span id="galletas"></span></div>
+    <div>Memoria: <span id="memoria"></span></div>
+    <div>Táctil: <span id="tactil"></span></div>
+    <div id="div1"></div>
+    <script>
+        window.onload=function(){
+             
+            navegador.innerText=navigator.userAgent;
+            sistema.innerText=navigator.platform;
+            idioma.innerText=navigator.language;
+            galletas.innerText=navigator.cookieEnabled?"Cookis activadas":"Cookis desactivadas"
+            memoria.innerText=navigator.deviceMemory+"GB"
+            tactil.innerText=navigator.maxTouchPoints
+            switch(navigator.language){
+                case "es-ES":
+                    idioma.innerText="Español"
+                    break;
+                case "en-EN":
+                    idioma.innerText="Inglés"
+                    break;
+                default:
+                    idioma.innerText="?¿"
+                    break;
+                
+            }
+            for (const x in navigator){
+            document.querySelector("div1").innerHTML="<p>"+propiedad+":"+navigator[propiedad]
+                console.log(navigtor[propiedad])
+        }
+            conexion.innerText=navigator.onLine?"conectado":"desconectado";
+        }
+       
+    </script>
+</body>
+</html>
