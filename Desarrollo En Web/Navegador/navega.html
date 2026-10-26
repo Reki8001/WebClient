@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Navegador</title>
+</head>
+<body>
+    <h1>ELIGE DESTINO</h1>
+    <label for="destino">Elige un destino: </label>
+    <button id="atras">&lt;&lt;&lt;</button>
+    <span id="cd">1</span>
+    <button id="adelante">&gt;&gt;&gt;</button>
+    <select id="destino">
+        <option value="0">Elige</option>
+        <option value="1">Pa lante</option>
+        <option value="2">Patras</option>
+        <option value="3">Me quedo</option>
+    </select>
+
+    <div id="pantalla"></div>
+
+    <script>
+        let historial = [0];
+        let posicion = 0;
+
+        const cd = document.getElementById('cd');
+        const pantalla = document.getElementById('pantalla');
+        const select = document.getElementById('destino');
+        const btnAtras = document.getElementById('atras');
+        const btnAdelante = document.getElementById('adelante');
+
+        const webs = {
+            0: "<h2>Estás en la Página de Inicio</h2>",
+            1: "<h2>Has viajado a: Pa lante</h2>",
+            2: "<h2>Has viajado a: Patras</h2>",
+            3: "<h2>Has viajado a: Me quedo</h2>"
+        };
+
+        function renderizar() {
+            cd.textContent = historial.length;
+            pantalla.innerHTML = webs[historial[posicion]];
+            select.value = historial[posicion];
+        }
+
+        select.addEventListener('change', function() {
+            let nuevaWeb = Number(this.value);
+            historial = historial.slice(0, posicion + 1);
+            historial.push(nuevaWeb);
+            posicion = historial.length - 1;
+            renderizar();
+        });
+
+        btnAtras.addEventListener('click', function() {
+            if (posicion > 0) {
+                posicion--;
+                renderizar();
+            }
+        });
+
+        btnAdelante.addEventListener('click', function() {
+            if (posicion < historial.length - 1) {
+                posicion++;
+                renderizar();
+            }
+        });
+
+        renderizar();
+    </script>
+</body>
+</html>

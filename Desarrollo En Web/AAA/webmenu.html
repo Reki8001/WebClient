@@ -49,15 +49,17 @@
     <header>
         <nav>
         <ul>
-            <li><a href="#1">ElPaís</a></li>
-            <li><a href="#2">ElDiario</a></li>
-            <li><a href="#3">AtlasFood</a></li>
-            <li><a href="#4">Caracola</a></li>
+            <li><a href="#1">Noticias</a></li>
+            <li><a href="#2">Música</a></li>
+            <li><a href="#3">Age Of Wonders</a></li>
+            <li><a href="#4">Itaca</a></li>
+            <li><a href="#5">Bolita</a></li>
+            <li><a href="#6">Higher-Lower</a></li>
         </ul>
         </nav>
     </header>
     <script>
-        let direcciones=["https://www.elpais.es", "www.eldiario.es", "www.marca.es", "www.as.es"]
+        let direcciones=["https://www.elpais.es", "https://www.youtube.com/embed/5ZhhmEBghEc?si=RKQtLcbmfLa-Fwbe", "https://www.youtube.com/embed/TCkkwch63Xg?si=EJCTUKl4nZbUdtbU", "itaca", "/bolita.html","https://www.higherorlowergame.com/"]
         window.addEventListener("load", function(){
             window.addEventListener("hashchange", function(){
                 valor=location.hash;
@@ -69,11 +71,21 @@
                         frames[0].location.href=direcciones[1];
                         break;
                     case "#3":
-                        frames[0].location.href=direcciones[2];
+                        frames[0].location.href="https://www.youtube.com/embed/TCkkwch63Xg?si=EJCTUKl4nZbUdtbU";
                         break;
                     case "#4":
                         frames[0].location.href="https://itaca.gg/profile/index";
                         break;
+                    case "#5":
+                        frames[0].location.href=direcciones[4];
+                        break;
+                    case "#6":
+                        frames[0].location.href=direcciones[5];
+                        break;
+                    default:
+                        frames[0].location.href=direcciones[5]
+                        break;
+                    
                 }
             })
         })
