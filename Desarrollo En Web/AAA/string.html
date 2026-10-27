@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width-device-width, initial-scale=1">
+    <title>STRING THINGS</title>
+    <style>
+        body{
+            background-color: rgb(38, 89, 109);
+        }
+        textarea{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let nombre = "Raúl García";
+        let nombre2 = new String ("Rekï Bêlla");
+        let nombre3 = new String ("Ranulf 8001");
+        let nombre4 = "Rean 27";
+        let nombre5 = "Ra García"
+        let nombre6 = "Messie Seraphan"
+        let i=0;
+        console.log(nombre);
+        console.log(nombre2);
+        console.log(nombre.length);
+        console.log(nombre2.length);
+        console.log(nombre2.indexOf("e")); //Devuelve posicion, la primera
+        console.log(nombre6.indexOf("e", 6));
+        console.log(nombre3, nombre4, nombre5);
+        window.addEventListener("load", function(){
+            document.forms[0].addEventListener("submit", function(evento){
+                evento.preventDefault();
+                texto=document.getElementById("texto").value;
+                termino=document.getElementById("termino").value;
+                resultado=texto.indexOf(termino, i+1);
+                resultado>=0?console.log(resultado):console.log("No esta");
+                i=resultado;
+            })
+            document.forms[0].addEventListener("submit", function(event){
+                event.preventDefault();
+                //TO DO: Que el text de busqueda se muestre dorado subrayado en el p colores
+            })
+        //window.addEventListener("submit", function(){console.log(texto.indexOf(termino))})
+        })
+    </script>
+    <form action="#">
+        <label for="texto">Texto</label>
+        <textarea name="texto" id="texto"></textarea>
+        <label for="termino">Termino</label>
+        <input type="text" id="termino" name="termino">
+        <input type="submit" value="Buscar">
+    </form>
+    <p id="colores">
+        Este texto se supone que sea largo, no se como hacer un texto largo y con sentido, supongo que tendre que improvisar, es lo unico que podría hacer ahora, duplicar
+        texto también podría ser una opción pero simplemente me parece que quedará feo así que no lo haré. La verdad no se que hago escribiendo esto a mano, en 
+        pleno apogeo de la ia y con miles de textos aleatorios y perfectamente funcionales, esto es simplemente una labor absurda y bruta, muchos quizás lo 
+        menospreciarían y razón no les falta. Sin embargo, yo creo que no hay nada como el trabajo humano, es simplemente algo irremplazable, la ia carece de flexibilidad,
+        al menos actualmente, y no puede pensar por sí misma, desde luego yo no confiaría en ella para labores cómo esta, por otro lado, un texto de internet o de algún
+        otro lado, no suena tan mal, pero entonces, ya no sería mi texto, y sería más díficil de manejar, porque yo no lo escribí.
+        De todas maneras escribir es divertido, puede cansar, sí, sobre todo a lápiz, pero a mi siempre me ha gustado, la expresión mediante la pluma y el pincel son de mis
+        expresiones favoritas, la música también me agrada pero por el momento no estoy ni cerca de dominarla. Tampoco digo que sea un experto en pintura o escritura,
+        obviamente, pero al menos puedo defenderme.
+        Quiero pensar que este texto no esta quedando mal y que tiene una longitud adecuada, pero seguro que si lo amplio en visión web va a ser enano y una basura, probablemente
+        use estilos para meter este texto en un cuadro y darle padding, margin o font-size para que sea más curiosillo, porque ya me estoy quedando sin ideas sobre que 
+        escribir y encima me toca revisarlo en casa porque no entendí como ponerlo color dorado, en parte por eso escribo este mensaje a mano supongo, para 
+        engañarme a mi mismo y decirme: "joder he hecho algo, he aprendido algo", pero estoy mazo perdido con javascript, no quisiera tener que contratar un particular,
+        comparado al año pasado, estas clases son la leche, pero esque no tengo ni zorra de sintaxis, es definitivamente mi mayor problema, por no decir el único.
+        La cosa es, que sintaxis no solo se resume a "cómo escribir palabras", también a "cómo usarlas", de nada me sirve ver un "addEventListener" en una tabla, ni
+        me ayuda saber que hace, osea, yo sé lo que hace, simplemente me cuesta conectarlo con otras etiquetas y/o no entiendo bien cómo escribirlas, pero el problema 
+        principal es ese, no el no saber que usar, ni el cuándo o dónde, sino el cómo se escribe y cómo se usa, necesito generalmente un ejemplo previo, hecho, aunque 
+        no tenga nada que ver con el ejercicio (aunque es es díficil teniendo en cuenta cómo es la programación). Quiero pensar que de lógica voy de locos, en pseudocódigo te 
+        hago lo que sea, por eso me frustra aún más, obviamente casi nadie se sabe todas las etiquetas de memoria, la mayoría recurre a la ia o manuales, y eso está bien, no 
+        lo veo mal, pero yo esque no se conectarlo entre sí sino veo un ejemplo correcto, y debe ser correcto, ya que en este mundillo, hay mil maneras de hacer lo mismo, pero 
+        no todas son correctas, incluso algunas están mal vistas, en desuso o simplemente tu jefe/equipo no lo usa y están en su derecho supongo. Así que sí,
+        es algo que me preocupa, sobre todo de cara al futuro, si esque me dedicó a esto, porque el futuro siempre pinta de negro, no tiene más colores y día a día usa tonos más 
+        oscuros de negro, en fin, Dios dirá.
+        Con la tontería este texto está ganando terreno, no pensé que escribiría tanto, honestamente pensé dejarlo antes, pero tengo un bloqueo en este ejercicio y sólo puedo hacer 
+        esto por ahora, esta tarde sin falta le echó otro vistazo, me tiene que salir, sí o sí. El examen me preocupa, pero ¡eso no es motivo suficiente para rendirme!
+    </p>
+    <form action="#">
+    <label for="text">Búsqueda</label>
+    <input type="text" name="text" id="text">
+    <input type="submit" value="Buscar">
+    </form>
+</body>
+</html>
