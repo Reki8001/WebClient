@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Segundos fuera</title>
+    <style>
+        div{
+            border: black solid 1px;
+            margin: auto;
+            text-align: center;
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="contador"></div>
+
+    <script>
+        let a = 0;
+
+        window.onload=function(){
+            miIntervalo=setInterval(miFuncion, 100);
+        }
+        function miFuncion() {
+            a>100?clearInterval(miIntervalo):(contador.innerHTML=a,a++);
+        }
+
+        /*window.onload=miFuncion;
+        function miFuncion() {
+            contador.innerHTML=a;
+            a++;
+            setTimeout(miFuncion, 1);
+        }*/
+    </script>
+
+</body>
+</html>
