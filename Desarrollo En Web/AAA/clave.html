@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscador</title>
+    <style>
+        textarea{
+            display: inline-block;
+            border: 3px solid;
+            background-color: antiquewhite;
+            width: 30%;
+            height: 35em;
+            text-align: center;
+            margin: auto;
+        }
+        div{
+            text-align:center;
+            background-color:darkslategray;
+            padding: 1em;
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+<script>
+    
+    i=0;
+    window.addEventListener("load", function(){
+        window.addEventListener("click", function(evento){
+            evento.preventDefault();
+            console.log("Se ha detectado el click");
+            document.querySelectorAll("button")[0].onclick=codificar;
+            document.querySelectorAll("button")[1].onclick=decodificar;
+        })
+    })
+    function codificar(){
+        let clave=Math.random()*10000;
+        console.log("Ejecuto codificar \n clave:" + clave)
+        codigo.innerHTML=String.fromCharCode(clave);
+        for(i=0; i<nombre.value.length;i++){
+             console.log(i)
+            codig=nombre.value.charCodeAt(i);
+            codigo.innerHTML+=String.fromCharCode(codig+clave);
+        }
+    }
+    function decodificar(){
+        let clave2=nombre.value.charCodeAt(0)
+        console.log("Ejecuto descodificar")
+        for(i=1;i<nombre.value.length; i++){
+            console.log(i)
+            codig=nombre.value.charCodeAt(i);
+            codigo.innerHTML+=String.fromCharCode(codig-clave2)
+        }
+
+    }
+</script>
+<div>
+    <textarea name="nombre" id="nombre">A</textarea>
+    <textarea name="codigo" id="codigo">65</textarea>
+    <br>
+    <hr>
+    <br>
+    <button>Codificar</button>
+    <button>Descodificar</button>
+</div>
+
+</body>
+</html>
