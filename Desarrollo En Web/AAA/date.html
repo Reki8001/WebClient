@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Buscador</title>
+        <style>
+            body{
+                background-image: url("https://imgs.search.brave.com/Ehavq8DPrfaKq65opLgsqQNJRV1VYdjUP7i6zCE801s/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTU3/NTg2MDIzL2VzL2Zv/dG8vY2VydmV6YS12/ZXJ0aWVuZG8uanBn/P3M9NjEyeDYxMiZ3/PTAmaz0yMCZjPTIw/VVhnR25KbThNMDlw/RndEQ3VLOHJuRnNV/emc3dU1zaDRSM003/akRpRkk9");
+            }
+            header{
+                text-align:center;
+                background-color:darkslategray;
+                padding: 1em;
+                border: 1px solid;
+            }
+            h1{
+                text-align: center;
+            }
+            div{
+                background-color:darkslategray;
+                padding: 1em;
+                border: 1px solid;
+                height: 40em;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            let fecha=new Date();
+            let total=fecha.getFullYear();
+            console.log(total)
+            total=total*365*24*3600*1000;
+            console.log(Math.trunc(Date.now()/1000/3600/24/365))
+            console.log(total)
+            console.log(fecha);
+
+            window.addEventListener("load", function(){
+                document.forms[0].onsubmit=function(evento){
+                    evento.preventDefault()
+                    datet.value.getMilliseconds>fecha.getMilliseconds?alert("introduce bien los datos"):fecha.getMilliseconds-datet.value.getMilliseconds>(18*365*24*3600*1000)?alert("todo bien"):alert("todo mal")
+                }})
+            
+        </script>
+        <header>
+            <h1>Hola</h1>
+        </header>
+        <hr>
+        <div>
+            <h1>Regístrate</h1>
+            <form action="#">
+                <label for="name">Nombre</label>
+                <input type="text" name="name" id="name">
+                <br>
+                <label for="datet">Fecha</label>
+                <input type="date" name="datet" id="datet">
+                <br>
+                <input type="submit" id="submit" name="Guardar">
+            </form>
+        </div>
+    </body>
+</html>
