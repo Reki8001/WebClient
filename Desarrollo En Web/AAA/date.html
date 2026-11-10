@@ -20,7 +20,19 @@
                 background-color:darkslategray;
                 padding: 1em;
                 border: 1px solid;
-                height: 40em;
+                height: 10em;
+            }
+            nav{
+                display: flex;
+                justify-content:space-around;
+                margin-right: 20em;
+            }
+            input[type="radio"]{
+                display:none;
+                
+            }
+            input:checked+label{
+                color:red;
             }
         </style>
     </head>
@@ -35,10 +47,20 @@
             console.log(fecha);
 
             window.addEventListener("load", function(){
+                comprobar(fecha)
                 document.forms[0].onsubmit=function(evento){
                     evento.preventDefault()
                     datet.value.getMilliseconds>fecha.getMilliseconds?alert("introduce bien los datos"):fecha.getMilliseconds-datet.value.getMilliseconds>(18*365*24*3600*1000)?alert("todo bien"):alert("todo mal")
                 }})
+            function comprobar(fechita){
+                fecha=new Date(fechita)
+                /* localstorage fechacum=fecha
+                obtener fecha hoy
+                obtener fecha mes
+                si fecha_hoy=fecha_cum.getDay && fecha_mes=fecha_cum.getMonth{alert(felicitar)}
+                */
+               let fecha_rev=new Date();
+               (fecha_rev.getDay==fecha.getDay && fecha_rev.getMonth==fecha.getMonth)?alert("Feliz cumple"):console.log("ok");}
             
         </script>
         <header>
@@ -56,6 +78,25 @@
                 <br>
                 <input type="submit" id="submit" name="Guardar">
             </form>
+        </div>
+        <div>
+            <nav>
+                <ol>
+                    <li><a href="#">Opcion 1</a></li>
+                    <li><a href="#">Opcion 2</a></li>
+                    <li><a href="#">Opcion 3</a></li>
+                </ol>
+            </nav>
+        </div>
+        <div>
+            <nav>
+                <input type="radio" id="menu1" name="menu">
+                <label for="menu1" name="menu">Opcion A</label>
+                <input type="radio" id="menu2" name="menu">
+                <label for="menu2" name="menu">Opcion B</label>
+                <input type="radio" id="menu3" name="menu">
+                <label for="menu3" name="menu">Opcion C</label>
+            </nav>
         </div>
     </body>
 </html>
