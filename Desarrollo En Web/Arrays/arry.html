@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Arrays - 1</title>
+        <style>
+            body{
+                padding: 10px auto;
+                background-color: rgb(164, 67, 255);
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <form action="#">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre">
+                <input type="submit">
+            </form>
+        </div>
+        <script>
+            let miAry = ["Suspenso", "Aprobado", "Notable", "Sobresaliente"];
+            console.log(miAry[0]);
+            let otroAry=new Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+            let cadena= "1 2 3";
+            let cadAry=cadena.split(" ");
+            console.log(cadena);
+            cadAry.reverse();
+            //.sort() ordena por orden alfabetico, se pueden especificar otros patrones en parentesis
+            //.slice(x, y) desde donde hasta donde
+            //.splice(x, y) desde donde y cuantas quita
+            //.concat(xa, ya)concatena arrays
+            console.log(cadAry[0], cadAry[1], cadAry[2]);
+            //document.querySelector("div").innerHTML+=`<p>${cadAry.length}</p>`
+
+            //for(x in array){ }  - > recorre todo el array
+            //for(x of array){ }
+            //array.forEach(function(){})
+            //x.forEach((argumentos) => {lo que sale de la "funcion"})
+
+
+
+
+            let nombres=new Array(); //let nombre=[] es otra opcion que hace lo mismo
+            window.addEventListener("load", function(){
+                window.addEventListener("submit", function(evento){
+                    console.log("Submit recibido")
+                    evento.preventDefault();
+                    nombres.push(nombre.value)
+                })
+                    for (i=0; i<nombres.size; i++){
+                        lista.innerHTML=nombres[i];
+                        console.log("Bucle recorrido"+i)
+                    }
+            })
+        </script>
+
+        <div>
+            <p id="lista"></p>
+        </div>
+    </body>
+    </html>

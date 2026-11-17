@@ -25,14 +25,21 @@
             nav{
                 display: flex;
                 justify-content:space-around;
-                margin-right: 20em;
+                margin: auto;
+            }
+            nav:nth-child(1) a::after{
+                position: absolute;
+                background-color: red;
             }
             input[type="radio"]{
                 display:none;
                 
             }
             input:checked+label{
-                color:red;
+                color: blue;
+                background-color: red;
+                width:calc((100%)/3);
+                text-align:center;
             }
         </style>
     </head>
