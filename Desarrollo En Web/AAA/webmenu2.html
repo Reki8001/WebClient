@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>WebMenu2</title>
+        <style>
+            main{
+                width:80%;
+                height: 50vh;
+                background-color: bisque;
+                border-radius: 2em;
+                margin: 20px auto;
+                border: 3px solid black;
+                box-shadow: 5px 5px 5px black;
+                position: relative;
+            }
+            div{
+                margin: 20px;
+            }
+            input[type="checkbox"]{
+                display: none;
+            }
+            label{
+                top: 10px;
+                left:10px;
+                background-color: red;
+                display: block;
+                width: 10%;
+                text-align: center;
+                border: 3px solid white;
+                position: absolute;
+                border-radius: 50em;
+            }
+            input:checked+label{
+                background-color: blue;
+            }
+            nav{
+                display:none;
+                width:90;
+                height:100%;
+                padding: 2em;
+                background-color: brown;
+                border-radius: 2em;
+                clip-path: circle(0% at 20px 20px);
+                transition: clip-path 1s ease;
+            }
+            input:checked~nav{
+                display:block;
+                clip-path: circle(200% at 20px 20px);
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <div>
+                <input type="checkbox" id="menu" name="menu">
+                <label for="menu">Menú</label>
+                <nav>
+                    <ol>
+                        <li>Inicio</li>
+                        <li>Proyectos</li>
+                        <li>Contacto</li>
+                        <li>Ajustes</li>
+                    </ol>
+                </nav>
+            </div>
+        </main>
+    </body>
+    </html>

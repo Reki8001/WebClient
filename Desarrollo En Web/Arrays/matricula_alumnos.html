@@ -1,25 +1,182 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Matriculacion</title>
-        <style>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Matriculación</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 10%;
+            background-color: cadetblue;
+            border: 2px solid white;
+            padding: 10px;
 
-        </style>
-    </head> nombre edad curso aprobado/suspenso
-    <body>
-        <form action="#">
-            <label for="nombre">Nombre</label>
-            <input type="text" name="nombre" id="nombre">
-            <label for="apellido">Apellido</label>
-            <input type="text" name="apellido" id="apellido">
-            <label for="curso">Curso</label>
-            <input type="text" name="curso" id="curso">
-            <label for="as">Aprobado</label>
-            <input type="checkbox" name="as" id="as">
-        </form>
-        <script>
-            let array1=[[1,2,3], [4,5,7], [6,8,9]]
-        </script>
-    </body>
-    </html>
+        }
+        form {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            max-width: 400px;
+        }
+        label {
+            display: inline-block;
+            width: 90px;
+            margin-top: 8px;
+        }
+        input[type="text"] {
+            margin-top: 8px;
+            padding: 4px;
+        }
+        input[type="submit"] {
+            margin-top: 12px;
+            padding: 6px 15px;
+            cursor: pointer;
+        }
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 8px 12px;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        .aprobado {
+            color: green;
+            font-weight: bold;
+        }
+        .suspenso {
+            color: red;
+            font-weight: bold;
+        }
+        .btn-eliminar {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 4px 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .btn-eliminar:hover {
+            background-color: #c0392b;
+        }
+        hr{
+            width: 40%;
+        }
+        header{
+            margin-left:35%
+        }
+        div{
+            margin-left:35%
+        }
+    </style>
+</head>
+<body>
+    <header>
+    <h2>Formulario de Matriculación</h2>
+
+    <form id="formulario">
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre" required><br>
+        <label for="apellido">Apellido</label>
+        <input type="text" name="apellido" id="apellido" required><br>
+        <label for="edad">Edad</label>
+        <input type="number" name="edad" id="edad" required><br>
+        <label for="curso">Curso</label>
+        <input type="text" name="curso" id="curso" required><br>
+        <label for="as">Aprobado</label>
+        <input type="checkbox" name="as" id="as"><br>
+        <input type="submit" value="Añadir alumno">
+    </form>
+    </header>
+    <hr>
+    <div>
+    <h2>Listado de alumnos</h2>
+    <table id="tabla">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+                <th>Curso</th>
+                <th>Estado</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody id="cuerpoTabla">
+
+        </tbody>
+    </table>
+    </div>
+    <script>
+        const alumnos = [];
+
+        const formulario = document.getElementById('formulario');
+        const cuerpoTabla = document.getElementById('cuerpoTabla');
+
+        formulario.addEventListener('submit', function (evento) {
+            evento.preventDefault();
+
+            const nombre   = document.getElementById('nombre').value.trim();
+            const apellido = document.getElementById('apellido').value.trim();
+            const edad     = document.getElementById('edad').value.trim();
+            const curso    = document.getElementById('curso').value.trim();
+            const aprobado = document.getElementById('as').checked;
+
+            const alumno = [nombre, apellido, edad, curso, aprobado];
+
+            alumnos.push(alumno);
+
+            mostrarTabla();
+
+            formulario.reset();
+        });
+
+        function eliminarAlumno(indice) {
+        alumnos.splice(indice, 1);
+
+        mostrarTabla();
+        }
+
+        function mostrarTabla() {
+        cuerpoTabla.innerHTML = '';
+
+        alumnos.forEach(function (alumno, indiceAlumno) {
+            const fila = document.createElement('tr');
+
+            alumno.forEach(function (dato, indiceDato) {
+                const celda = document.createElement('td');
+
+                if (indiceDato === 4) {
+                    celda.textContent = dato ? 'Aprobado' : 'Suspenso';
+                    celda.className = dato ? 'aprobado' : 'suspenso';
+                } else {
+                    celda.textContent = dato;
+                }
+
+                fila.appendChild(celda);
+            });
+
+            const celdaBoton = document.createElement('td');
+            const botonEliminar = document.createElement('button');
+            botonEliminar.textContent = 'X';
+            botonEliminar.className = 'btn-eliminar';
+
+            botonEliminar.dataset.indice = indiceAlumno;
+
+            botonEliminar.addEventListener('click', function () {
+                eliminarAlumno(Number(this.dataset.indice));
+            });
+
+            celdaBoton.appendChild(botonEliminar);
+            fila.appendChild(celdaBoton);
+
+            cuerpoTabla.appendChild(fila);
+        });
+        }
+    </script>
+</body>
+</html>

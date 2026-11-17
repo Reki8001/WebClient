@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Simulacro · 1.0</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        h2 { margin-bottom: 5px; }
+        #palabraActual {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #2c3e50;
+            background: #ecf0f1;
+            padding: 10px 15px;
+            border-radius: 6px;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        textarea {
+            width: 100%;
+            height: 90px;
+            padding: 8px;
+            box-sizing: border-box;
+            font-size: 1em;
+            resize: vertical;
+        }
+        button {
+            padding: 8px 16px;
+            margin: 8px 4px 8px 0;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        #btnComprobar { background: #27ae60; color: white; }
+        #btnComprobar:hover { background: #219150; }
+        #new { background: #2980b9; color: white; }
+        #new:hover { background: #2471a3; }
+        #mensaje {
+            font-size: 1.2em;
+            font-weight: bold;
+            min-height: 1.5em;
+        }
+        .gana { color: #27ae60; }
+        .pierde { color: #e74c3c; }
+        form {
+            margin-top: 25px;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        form label { display: block; margin-top: 8px; font-weight: bold; }
+        form input[type="text"] {
+            width: 100%;
+            padding: 6px;
+            box-sizing: border-box;
+        }
+        form input[type="submit"] {
+            margin-top: 12px;
+            background: #8e44ad;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        form input[type="submit"]:hover { background: #71368a; }
+        #listaProhibidas {
+            margin-top: 10px;
+            font-size: 0.95em;
+        }
+        #listaProhibidas span {
+            display: inline-block;
+            background: #fdebd0;
+            border: 1px solid #e67e22;
+            color: #a04000;
+            padding: 2px 8px;
+            margin: 3px;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Palabra a describir:</h2>
+    <div id="palabraActual">—</div>
+
+    <textarea id="intento" placeholder="Escribe aquí tu descripción sin usar las palabras prohibidas..."></textarea>
+
+    <div id="listaProhibidas"></div>
+
+    <button id="btnComprobar">Comprobar</button>
+    <button id="new">Nueva palabra aleatoria</button>
+
+    <p id="mensaje"></p>
+
+    <form id="formNuevo">
+        <label for="termino">Nuevo Término</label>
+        <input type="text" id="termino" name="termino" placeholder="Ej: perro">
+
+        <label for="prohibidas">Palabras prohibidas (separadas por coma)</label>
+        <input type="text" id="prohibidas" name="prohibidas" placeholder="Ej: ladra, mascota, pelo">
+
+        <input type="submit" value="Añadir">
+    </form>
+
+    <script>
+        let array1 = [
+            { id: 1, palabra: "playa",   prohibidas: ["arena", "mar", "sol", "ola"] },
+            { id: 2, palabra: "perro",   prohibidas: ["ladra", "mascota", "pelo", "can"] },
+            { id: 3, palabra: "coche",   prohibidas: ["rueda", "motor", "conducir", "volante"] },
+            { id: 4, palabra: "pizza",   prohibidas: ["queso", "masa", "italiana", "horno"] },
+            { id: 5, palabra: "invierno",prohibidas: ["frío", "nieve", "abrigo", "diciembre"] }
+        ];
+        let array2 = [];
+
+        const palabraActual  = document.getElementById('palabraActual');
+        const listaProhibidas = document.getElementById('listaProhibidas');
+        const intento        = document.getElementById('intento');
+        const mensaje        = document.getElementById('mensaje');
+        const btnComprobar   = document.getElementById('btnComprobar');
+        const btnNueva       = document.getElementById('new');
+        const formNuevo      = document.getElementById('formNuevo');
+
+        let idActual = null;
+
+        function getProhibidas(id) {
+            const base = array1.find(p => p.id === id);
+            if (!base) return [];
+
+            const extra = array2
+                .filter(p => p.id === id)
+                .map(p => p.texto);
+
+            return [...base.prohibidas, ...extra];
+        }
+
+        function normalizar(texto) {
+            return texto
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/[.,;:!?¡¿"']/g, "")
+                .replace(/\s+/g, " ")
+                .trim();
+        }
+
+        function nuevaPalabra() {
+            const indiceAleatorio = Math.floor(Math.random() * array1.length);
+            const seleccionada = array1[indiceAleatorio];
+
+            idActual = seleccionada.id;
+            palabraActual.textContent = seleccionada.palabra;
+
+            const prohibidas = getProhibidas(idActual);
+            listaProhibidas.innerHTML = '<strong>Prohibidas: </strong>';
+            prohibidas.forEach(p => {
+                const span = document.createElement('span');
+                span.textContent = p;
+                listaProhibidas.appendChild(span);
+            });
+
+            intento.value = '';
+            mensaje.textContent = '';
+            mensaje.className = '';
+        }
+
+        function comprobar() {
+            if (idActual === null) {
+                mensaje.textContent = 'Primero pulsa "Nueva palabra aleatoria".';
+                mensaje.className = '';
+                return;
+            }
+
+            const texto = normalizar(intento.value);
+
+            if (texto === '') {
+                mensaje.textContent = 'Escribe algo primero.';
+                mensaje.className = '';
+                return;
+            }
+
+            const prohibidas = getProhibidas(idActual).map(normalizar);
+
+            const usada = prohibidas.find(p => texto.includes(p));
+
+            if (usada) {
+                mensaje.textContent = `¡Perdiste! Usaste la palabra prohibida: "${usada}"`;
+                mensaje.className = 'pierde';
+            } else {
+                mensaje.textContent = '¡Ganaste! No usaste ninguna palabra prohibida.';
+                mensaje.className = 'gana';
+            }
+        }
+
+        formNuevo.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const palabra = document.getElementById('termino').value.trim();
+            const prohibidasTexto = document.getElementById('prohibidas').value.trim();
+
+            if (palabra === '') {
+                alert('Escribe un término.');
+                return;
+            }
+
+            if (array1.some(p => normalizar(p.palabra) === normalizar(palabra))) {
+                alert('Ese término ya existe.');
+                return;
+            }
+            const nuevoId = array1.length > 0
+                ? Math.max(...array1.map(p => p.id)) + 1
+                : 1;
+
+            const prohibidasArray = prohibidasTexto
+                .split(',')
+                .map(s => s.trim())
+                .filter(s => s !== '');
+            array1.push({
+                id: nuevoId,
+                palabra: palabra,
+                prohibidas: prohibidasArray
+            });
+            prohibidasArray.forEach(texto => {
+                array2.push({ id: nuevoId, texto: texto });
+            });
+
+            alert(`Añadido "${palabra}" con ${prohibidasArray.length} palabra(s) prohibida(s).`);
+            formNuevo.reset();
+        });
+
+        btnNueva.addEventListener('click', nuevaPalabra);
+        btnComprobar.addEventListener('click', comprobar);
+
+        window.addEventListener('load', nuevaPalabra);
+    </script>
+</body>
+</html>
