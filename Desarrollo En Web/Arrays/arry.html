@@ -37,7 +37,36 @@
             //for(x of array){ }
             //array.forEach(function(){})
             //x.forEach((argumentos) => {lo que sale de la "funcion"})
+            let x = [["", "", ""], ["", "", ""], ["", "", ""]];
+            let final=false
+            window.addEventListener("load", function(valor, indice){
+                document.querySelector("p")
 
+                function pintar(elemento, pos1, pos2){
+                    elemento.innerHTML=fichaUsuario;
+                    tablero[pos1, pos2]=fichaUsuario;
+                    comprobar(fichaUsuario)
+                }
+                function comprobar(laficha){
+                    ganador=laficha==fichaUsuario?"Usuario":"Ordenador";
+                    tablero[0][0]==laficha&&tablero[0][1]==laficha&&tablero[0][2]==laficha?alert(`Gana ${laficha} esta ronda`):void(0);
+                    tablero[1][0]==laficha&&tablero[1][1]==laficha&&tablero[1][2]==laficha?alert(`Gana ${laficha} esta ronda`):void(0);
+                    tablero[2][0]==laficha&&tablero[2][1]==laficha&&tablero[2][2]==laficha?alert(`Gana ${laficha} esta ronda`):void(0);
+
+                    tablero[0][0]==laficha&&tablero[1][0]==laficha&&tablero[2][0]==laficha?alert(`Gana ${laficha} esta ronda`):void(0);
+                    tablero[0][1]==laficha&&tablero[1][1]==laficha&&tablero[2][1]==laficha?alert(`Gana ${laficha} esta ronda`):void(0);
+                    tablero[0][2]==laficha&&tablero[1][2]==laficha&&tablero[2][2]==laficha?alert(`Gana ${laficha} esta ronda`):void(0);
+
+                    tablero[0][0]==laficha&&tablero[1][1]==laficha&&tablero[2][2]==laficha?alert(`Gana ${laficha} esta ronda`):void(0);
+                    tablero[0][2]==laficha&&tablero[1][1]==laficha&&tablero[2][0]==laficha?alert(`Gana ${laficha} esta ronda`):void(0);
+
+                    final?(alert("FELICIDADES " + ganador), confirm("Quieres otra?")?location.reload():void(0)):void(0);
+                    window.addEventListener("alert", function(){
+                        if (final==false){ final=true; }
+                        else if (final==true){ final=false; }
+                    })
+                }
+            })
 
 
 
