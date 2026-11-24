@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Cambio modo</title>
+        <style>
+            :root{
+                color-scheme: light;
+            }
+            :root:has(header :checked){
+                color-scheme: dark;
+
+            }
+            header{
+                justify-content: space-between;
+                display: flex;
+            }
+            body{
+                width: 80%;
+                margin: 0 auto;
+                border: 1px solid black;
+            }
+            h1{
+                margin: 0;
+            }
+            main{
+                padding: 10%
+            }
+            input{
+                display:none;
+            }
+            label{
+                width: 60px;
+                height: 30px;
+                background-color: aquamarine;
+                display:block;
+                border-radius: 999em;
+                position: relative;
+            }
+            label:after{
+                content:"";
+                width: 30px;
+                height: 30px;
+                background-color: bisque;
+                top: 0;
+                left:1px;
+                border-radius: 50%;
+                position: absolute;
+            }
+            :checked+label{
+                background-color:crimson;
+            }
+            :checked+label:after{
+                background-color: burlywood;
+                left: 29px;
+            }
+            main label{
+                display: inline-block;
+                width: 40px;
+                height: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Mi mega web superchula</h1>
+            
+            <input type="checkbox" id="modo" name="modo">
+            <label for="modo"></label>
+        </header>
+        <main>
+            <selection>
+                <article>
+                    <p>Utilizamos cookies propias y de terceros para garantizar el mejor servicio</p>
+                    <p>Cookies comerciales</p><input type="checkbox" id="cookie1" name="cookie1"><label for="cookie1"></label>
+                    <p>Cookies tecnicas</p><input type="checkbox" id="cookie2" name="cookie2"><label for="cookie2"></label>
+                    <p>Cookies de chocolate</p><input type="checkbox" id="cookie3" name="cookie3"><label for="cookie3"></label>
+                </article>
+            </selection>
+        </main>
+    </body>
+    </html>

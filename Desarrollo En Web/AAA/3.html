@@ -260,11 +260,21 @@
         select { max-width: 100%; }
         p { width: 92%; gap: 8px; padding: 10px; }
     }
-
+    #Game{
+        font-style: normal;
+        color:#ff3300;
+    }
+    #usuario, #pc, #empieza{
+        display:flex;
+        width: 1em;
+        height: 1em;
+        font-size: 1em;
+    }
     </style>
 </head>
 <body>
     <div class="chispas"></div>
+    <h1 id="Game">Usuario juega con <span id="usuario">X</span> El ordenador juega con <span id="pc">O</span> Empieza <span id="empieza">X</span></h1>
     <form action="#">
         <label for="pieza">Selecciona pieza</label>
         <select name="pieza" id="pieza">
@@ -319,7 +329,7 @@
             tablero[0][0] == laFicha && tablero[0][1] == laFicha && tablero[0][2] == laFicha ? final = true : void(0);
             tablero[1][0] == laFicha && tablero[1][1] == laFicha && tablero[1][2] == laFicha ? final = true : void(0);
             tablero[2][0] == laFicha && tablero[2][1] == laFicha && tablero[2][2] == laFicha ? final = true : void(0);
-            
+
             tablero[0][0] == laFicha && tablero[1][1] == laFicha && tablero[2][2] == laFicha ? final = true : void(0);
             tablero[0][0] == laFicha && tablero[1][0] == laFicha && tablero[2][0] == laFicha ? final = true : void(0);
             tablero[0][1] == laFicha && tablero[1][1] == laFicha && tablero[2][1] == laFicha ? final = true : void(0);

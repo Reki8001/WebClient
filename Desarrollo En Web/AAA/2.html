@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>2</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <script>
+            let tablero=[["X", "O", ""],["", "X", "O"],["O","O",""]]
+            let miTablero=[5, -5 ,0]
+            
+            for(let i=0;i<3;i++){
+            miTablero.push(tablero[i].map(funcion1));
+            }
+            function funcion1(elemento){
+                switch(elemento){
+                    case "X": return 5; break;
+                    case "O": return -5; break;
+                    case "": return 0; break;
+                }
+            }
+            alert(tablero[0][1], miTablero[0][1])
+
+            let fila1=miTablero[0].reduce((suma, n)=>suma+n, 0)
+
+            let fila2=miTablero[1].reduce((suma, n)=>suma+n, 0)
+
+            let fila3=miTablero[2].reduce((suma, n)=>suma+n, 0)
+
+            let columna1=miTablero.reduce((total, fila)=> total+fila[0], 0)
+            let columna2=miTablero.reduce((total, fila)=> total+fila[1], 0)
+            let columna3=miTablero.reduce((total, fila)=> total+fila[2], 0)
+
+
+            let diagonal1=miTablero.reduce((total,fila, indice)=>total+fila[indice], 0)
+            let diagonal2=miTablero.reduce((total, fila, indice)=>total+fila[fila.length-1-indice], 0)
+        </script>
+    </body>
+    </html>
