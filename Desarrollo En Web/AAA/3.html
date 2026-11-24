@@ -4,31 +4,267 @@
     <meta charset="UTF-8">
     <title>3 en Raya</title>
     <style>
-        p{
-            width: 80%;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-auto-rows: 30vh;
-        }
+        
+    @import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Orbitron:wght@700&display=swap');
 
-        span{
-            border: 1px solid black;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 30vh;
-        }
+    * {
+        box-sizing: border-box;
+    }
 
-        form{
-            width: 80%;
-            margin: 10px 0;
-            display: flex;
-            justify-content: space-between;
-        }
+    body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        background: radial-gradient(circle at 50% 20%, #2a0033 0%, #0a0010 55%, #000 100%);
+        font-family: 'Orbitron', sans-serif;
+        overflow: hidden;
+        position: relative;
+    }
+
+    /* Fuego de fondo: capas animadas con gradientes y blur */
+    body::before,
+    body::after {
+        content: "";
+        position: fixed;
+        left: 50%;
+        bottom: -40vh;
+        width: 120vw;
+        height: 90vh;
+        transform: translateX(-50%);
+        pointer-events: none;
+        z-index: 0;
+        filter: blur(40px);
+        opacity: 0.75;
+    }
+
+    body::before {
+        background: radial-gradient(ellipse at 30% 80%, #ff3d00 0%, #ff9100 25%, #ffd000 45%, transparent 70%),
+                    radial-gradient(ellipse at 70% 80%, #ff0055 0%, #ff6a00 30%, transparent 65%);
+        animation: fuego 4s ease-in-out infinite alternate;
+    }
+
+    body::after {
+        background: radial-gradient(ellipse at 50% 90%, #ffcc00 0%, #ff5500 30%, #ff0033 55%, transparent 75%);
+        mix-blend-mode: screen;
+        animation: fuego 2.6s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes fuego {
+        0%   { transform: translateX(-50%) scaleY(0.9) skewX(-4deg); opacity: 0.6; }
+        50%  { transform: translateX(-52%) scaleY(1.1) skewX(3deg);  opacity: 0.85; }
+        100% { transform: translateX(-48%) scaleY(1.3) skewX(-2deg); opacity: 0.95; }
+    }
+
+    /* Chispas animadas */
+    .chispas {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+        background-image:
+            radial-gradient(2px 2px at 20% 80%, #ffd700, transparent),
+            radial-gradient(2px 2px at 40% 90%, #ff6a00, transparent),
+            radial-gradient(3px 3px at 60% 85%, #ffcc00, transparent),
+            radial-gradient(2px 2px at 80% 95%, #ff3300, transparent),
+            radial-gradient(2px 2px at 10% 70%, #ffaa00, transparent),
+            radial-gradient(2px 2px at 75% 75%, #ffdd00, transparent);
+        animation: subirChispas 6s linear infinite;
+        opacity: 0.8;
+    }
+
+    @keyframes subirChispas {
+        0%   { transform: translateY(0) scale(1); opacity: 0.9; }
+        100% { transform: translateY(-30vh) scale(0.4); opacity: 0; }
+    }
+
+    /* Formulario estilo neón Vegas */
+    form {
+        position: relative;
+        z-index: 3;
+        width: min(80%, 500px);
+        margin: 10px 0;
+        padding: 14px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, rgba(255,0,128,0.18), rgba(0,229,255,0.18));
+        border: 2px solid rgba(255, 215, 0, 0.6);
+        box-shadow:
+            0 0 12px #ff00cc,
+            0 0 28px #ff9100,
+            0 0 50px rgba(255, 0, 80, 0.5),
+            inset 0 0 18px rgba(255, 215, 0, 0.25);
+        animation: parpadeoVegas 2.4s infinite alternate;
+        backdrop-filter: blur(6px);
+    }
+
+    @keyframes parpadeoVegas {
+        0%   { box-shadow: 0 0 12px #ff00cc, 0 0 28px #ff9100, 0 0 50px rgba(255,0,80,.5), inset 0 0 18px rgba(255,215,0,.25); }
+        50%  { box-shadow: 0 0 18px #00e5ff, 0 0 36px #ff00cc, 0 0 70px rgba(255,145,0,.7), inset 0 0 26px rgba(0,229,255,.35); }
+        100% { box-shadow: 0 0 12px #ff9100, 0 0 28px #00e5ff, 0 0 50px rgba(255,0,128,.6), inset 0 0 18px rgba(255,215,0,.25); }
+    }
+
+    label {
+        color: #ffe680;
+        font-family: 'Bungee Shade', cursive;
+        font-size: 1.05rem;
+        letter-spacing: 2px;
+        text-shadow: 0 0 8px #ff9100, 0 0 18px #ff00cc;
+    }
+
+    select {
+        flex: 1;
+        max-width: 160px;
+        padding: 10px 12px;
+        font-family: 'Orbitron', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #fff;
+        background: linear-gradient(180deg, #1a0033, #330066);
+        border: 2px solid #ffd700;
+        border-radius: 10px;
+        outline: none;
+        cursor: pointer;
+        box-shadow: 0 0 10px #ffd700, inset 0 0 10px rgba(255,0,128,.5);
+        transition: transform .15s, box-shadow .2s;
+    }
+
+    select:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 18px #00e5ff, 0 0 30px #ff00cc, inset 0 0 14px rgba(255,215,0,.6);
+    }
+
+    select option {
+        background: #1a0033;
+        color: #ffd700;
+    }
+
+    /* Tablero */
+    p {
+        position: relative;
+        z-index: 2;
+        width: min(80%, 600px);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: minmax(90px, 22vh);
+        gap: 10px;
+        padding: 14px;
+        border-radius: 22px;
+        background: rgba(10, 0, 20, 0.55);
+        border: 2px solid rgba(255, 0, 128, 0.55);
+        box-shadow:
+            0 0 25px rgba(255, 0, 128, 0.6),
+            0 0 60px rgba(0, 229, 255, 0.35),
+            inset 0 0 40px rgba(255, 145, 0, 0.15);
+        backdrop-filter: blur(4px);
+    }
+
+    span {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: clamp(2.5rem, 12vh, 7rem);
+        font-family: 'Bungee Shade', cursive;
+        color: #fff;
+        border-radius: 16px;
+        border: 2px solid rgba(255, 215, 0, 0.7);
+        background:
+            radial-gradient(circle at 30% 20%, rgba(255,0,128,0.35), transparent 55%),
+            radial-gradient(circle at 70% 80%, rgba(0,229,255,0.35), transparent 55%),
+            linear-gradient(145deg, #1a0033, #0a0015);
+        box-shadow:
+            0 0 14px rgba(255, 0, 128, 0.55),
+            0 0 30px rgba(0, 229, 255, 0.25),
+            inset 0 0 18px rgba(255, 215, 0, 0.2);
+        cursor: pointer;
+        transition: transform .18s ease, box-shadow .25s ease, background .25s ease;
+        user-select: none;
+        overflow: hidden;
+        animation: latidoVegas 3s infinite ease-in-out;
+    }
+
+    span::after {
+        content: "";
+        position: absolute;
+        inset: -40%;
+        background: conic-gradient(from 0deg, transparent, rgba(255,215,0,.55), transparent 30%, transparent 70%, rgba(0,229,255,.55), transparent);
+        animation: girarNeon 4s linear infinite;
+        opacity: 0.35;
+        pointer-events: none;
+    }
+
+    @keyframes girarNeon {
+        to { transform: rotate(360deg); }
+    }
+
+    @keyframes latidoVegas {
+        0%, 100% { box-shadow: 0 0 14px rgba(255,0,128,.55), 0 0 30px rgba(0,229,255,.25), inset 0 0 18px rgba(255,215,0,.2); }
+        50%      { box-shadow: 0 0 22px rgba(255,145,0,.85), 0 0 50px rgba(255,0,128,.5), inset 0 0 26px rgba(0,229,255,.35); }
+    }
+
+    span:hover {
+        transform: scale(1.06) rotate(-1deg);
+        box-shadow:
+            0 0 25px #ffd700,
+            0 0 55px #ff00cc,
+            0 0 90px rgba(0,229,255,.6),
+            inset 0 0 30px rgba(255,215,0,.5);
+    }
+
+    span:active {
+        transform: scale(0.96);
+    }
+
+    /* Colores distintos para X y O */
+    span:not(:empty) {
+        animation: aparecerFicha .5s cubic-bezier(.2,1.6,.4,1), brilloFicha 1.8s infinite alternate;
+    }
+
+    @keyframes aparecerFicha {
+        0%   { transform: scale(0) rotate(-180deg); opacity: 0; filter: blur(6px); }
+        60%  { transform: scale(1.25) rotate(10deg); opacity: 1; filter: blur(0); }
+        100% { transform: scale(1) rotate(0); }
+    }
+
+    @keyframes brilloFicha {
+        0%   { text-shadow: 0 0 10px #ffd700, 0 0 25px #ff9100, 0 0 45px #ff00cc; }
+        100% { text-shadow: 0 0 18px #00e5ff, 0 0 40px #ff00cc, 0 0 70px #ffd700; }
+    }
+
+    /* Estilo específico por contenido (X y O) */
+    span:not(:empty) {
+        color: #ffe680;
+    }
+
+    /* Fuego extra en el tablero al pasar el ratón */
+    p:hover {
+        box-shadow:
+            0 0 35px rgba(255, 145, 0, 0.8),
+            0 0 80px rgba(255, 0, 128, 0.55),
+            inset 0 0 60px rgba(255, 215, 0, 0.2);
+        transition: box-shadow .4s;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+        form { width: 92%; flex-direction: column; align-items: stretch; }
+        label { text-align: center; }
+        select { max-width: 100%; }
+        p { width: 92%; gap: 8px; padding: 10px; }
+    }
+
     </style>
 </head>
 <body>
+    <div class="chispas"></div>
     <form action="#">
         <label for="pieza">Selecciona pieza</label>
         <select name="pieza" id="pieza">
@@ -83,9 +319,11 @@
             tablero[0][0] == laFicha && tablero[0][1] == laFicha && tablero[0][2] == laFicha ? final = true : void(0);
             tablero[1][0] == laFicha && tablero[1][1] == laFicha && tablero[1][2] == laFicha ? final = true : void(0);
             tablero[2][0] == laFicha && tablero[2][1] == laFicha && tablero[2][2] == laFicha ? final = true : void(0);
+            
             tablero[0][0] == laFicha && tablero[1][1] == laFicha && tablero[2][2] == laFicha ? final = true : void(0);
             tablero[0][0] == laFicha && tablero[1][0] == laFicha && tablero[2][0] == laFicha ? final = true : void(0);
             tablero[0][1] == laFicha && tablero[1][1] == laFicha && tablero[2][1] == laFicha ? final = true : void(0);
+
             tablero[0][2] == laFicha && tablero[1][2] == laFicha && tablero[2][2] == laFicha ? final = true : void(0);
             tablero[0][2] == laFicha && tablero[1][1] == laFicha && tablero[2][0] == laFicha ? final = true : void(0);
 
